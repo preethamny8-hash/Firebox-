@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Firebox - Search the Web</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: white;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+.navbar {
+    width: 100%;
+    padding: 18px 7%;
+    background: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff7139;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff7139;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ff7139;
+    bottom: -7px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 65px;
+    color: #ff7139;
+    margin-bottom: 12px;
+    animation: fadeIn 1s ease;
+}
+
+.hero p {
+    color: #b8c2d1;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+/* SEARCH BOX */
+
+.search-box {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 50px;
+    padding: 8px;
+    transition: 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: #ff7139;
+    box-shadow: 0 0 15px rgba(255,113,57,0.25);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.search-box button {
+    background: #ff7139;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #e85b24;
+    transform: scale(1.04);
+}
+
+/* SHORTCUTS */
+
+.shortcuts {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.shortcut {
+    width: 100px;
+    padding: 18px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 15px;
+    background: #172033;
+    transition: 0.3s;
+}
+
+.shortcut:hover {
+    background: #29364c;
+    transform: translateY(-7px);
+}
+
+.shortcut span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.shortcut p {
+    font-size: 13px;
+}
+
+/* ABOUT SECTION */
+
+.about {
+    padding: 50px 20px;
+    text-align: center;
+    background: #111827;
+}
+
+.about h2 {
+    color: #ff7139;
+    margin-bottom: 15px;
+}
+
+.about p {
+    max-width: 600px;
+    margin: auto;
+    color: #b8c2d1;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+    .menu {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #111827;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 25px 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .search-box button {
+        padding: 12px 17px;
+    }
+
+    .shortcuts {
+        gap: 12px;
+    }
+}
+.developer-info a {
+    color: #ff7139;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.developer-info a:hover {
+    color: #38bdf8;
+    text-decoration: underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <a href="#" class="logo">Firebox 🔥</a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <h1>🔥 Firebox</h1>
+
+    <p>Explore the internet. Discover something new.</p>
+
+    <!-- SEARCH -->
+
+    <form class="search-box" onsubmit="searchWeb(event)">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search the web..."
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">Search</button>
+
+    </form>
+
+    <!-- SHORTCUTS -->
+
+    <div class="shortcuts">
+
+        <a href="https://www.google.com" class="shortcut">
+            <span>🔍</span>
+            <p>Google</p>
+        </a>
+
+        <a href="https://www.youtube.com" class="shortcut">
+            <span>▶️</span>
+            <p>YouTube</p>
+        </a>
+
+        <a href="https://www.wikipedia.org" class="shortcut">
+            <span>📚</span>
+            <p>Wikipedia</p>
+        </a>
+
+        <a href="https://github.com" class="shortcut">
+            <span>💻</span>
+            <p>GitHub</p>
+        </a>
+
+        <a href="https://www.instagram.com" class="shortcut">
+            <span>📸</span>
+            <p>Instagram</p>
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2>About Firebox</h2>
+
+    <p>
+        This is a start up website of <strong>Preetham NY from Karnataka
+        </strong>
+        
+    <br>
+    <strong>Instagram:</strong>
+    <a href="https://www.instagram.com/YOUR_USERNAME/"
+       target="_blank"
+       rel="noopener noreferrer">
+      <br> Visit My Instagram
+    </a>
+
+    </p>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <p>🔥 Firebox - Explore Without Limits</p>
+
+    <p>Designed with ❤️</p>
+
+    <p>© 2026 Firebox. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+// MOBILE MENU
+
+function toggleMenu() {
+    document.getElementById("navLinks")
+    .classList.toggle("active");
+}
+
+// GOOGLE SEARCH
+
+function searchWeb(event) {
+
+    event.preventDefault();
+
+    let query = document.getElementById("searchInput").value.trim();
+
+    if (query !== "") {
+        window.location.href =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
